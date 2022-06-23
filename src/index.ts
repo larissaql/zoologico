@@ -9,7 +9,6 @@ const run = async () => {
    * Execute as funções responsáveis pelas consultas aqui!
    */
 
-  
   /**
    * Fim das consultas
    */
