@@ -10,10 +10,12 @@ import { getJaula} from "../models/Jaula";
 export const recupJaulaDeZelador = async (zelador: Zelador) => {
     const response = await sql` 
         SELECT * FROM jaula
-        JOIN jaula_zelador ON jaula_zelador.id_jaula = jaula.codigo
-        JOIN zelador ON zelador.matricula = jaula_zelador.id_zelador
+        JOIN jaula_zelador ON jaula.codigo = jaula_zelador.id_jaula
+        JOIN zelador ON jaula_zelador.id_zelador = zelador.matricula
         WHERE matricula LIKE ${zelador.matricula}
     `
     const jaula = response.map(async (jsonObj) => await getJaula(jsonObj))
+
+    return jaula
     
 }

@@ -1,4 +1,9 @@
 import sql, { clearData, createTables, loadInitialData } from './config/db'
+import { recupEspeciePeloHabitat, recupEspeciePeloNomeCientifico } from './controllers/EspecieController'
+import { recupJaulaDeZelador } from './controllers/JaulaController'
+import { recupEspecimeDeEspecie, recupEspecimeDaJaula, recupEspecimeDeZelador } from './controllers/EspecimeController'
+import { recupZeladorDeEspecieme } from './controllers/ZeladorController'
+
 
 const run = async () => {
   await createTables()

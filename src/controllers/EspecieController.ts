@@ -8,21 +8,21 @@ import sql from "../config/db"
 import { getEspecie }  from "../models/Especie"
 
 export const recupEspeciePeloHabitat = async (habitat:string) => {
-    const responseArray = await sql`  
+    const response = await sql`  
         SELECT * FROM especie 
         WHERE habitat LIKE ${habitat}
     `
-    const especie = responseArray.map((jsonObj) => getEspecie(jsonObj))
+    const especie = response.map((jsonObj) => getEspecie(jsonObj))
 
     return especie
 }
 
 export const recupEspeciePeloNomeCientifico = async (nomeCientifico:string) => {
-    const responseArray = await sql`  
+    const response = await sql`  
         SELECT * FROM especie
         WHERE nome_cientifico LIKE ${nomeCientifico}
     `
-    const especie = responseArray.map((jsonObj) => getEspecie(jsonObj))
+    const especie = response.map((jsonObj) => getEspecie(jsonObj))
 
     return especie
     
