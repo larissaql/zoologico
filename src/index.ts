@@ -34,8 +34,6 @@ const run = async () => {
   const jaulaZelador = await recupJaulaDeZelador(matZelador)
   console.log(jaulaZelador)
 
-  const zeladores = await 
-  console.log()
 
   /**
    * Fim das consultas

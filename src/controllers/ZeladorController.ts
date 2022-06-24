@@ -6,7 +6,7 @@
 import sql from "../config/db"
 
 import Especie from "../models/Especie"
-import { getZelador } from "../models/Zelador"
+import Zelador, { getZelador } from "../models/Zelador"
 
 
 export const recupZeladorDeEspecieme = async (especie: Especie) => {
