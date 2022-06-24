@@ -5,7 +5,7 @@
 import sql from "../config/db";
 
 import Zelador from "../models/Zelador";
-import { getJaula} from "../models/Jaula";
+import Jaula, { getJaula} from "../models/Jaula";
 
 export const recupJaulaDeZelador = async (zelador: Zelador) => {
     const response = await sql` 
@@ -18,4 +18,14 @@ export const recupJaulaDeZelador = async (zelador: Zelador) => {
 
     return jaula
     
+}
+
+export const codigoDaJaula = async (codigo: string) => {
+    const response = await sql`
+        SELECT * FROM jaula
+        WHERE codigo LIKE codigo
+    `
+    const jaula = response.map(async (jsonObj) => await getJaula(jsonObj))
+
+    return jaula[0]
 }

@@ -10,7 +10,7 @@ import { getZelador } from "../models/Zelador"
 
 
 export const recupZeladorDeEspecieme = async (especie: Especie) => {
-    const responseArray = await sql`
+    const response = await sql`
         SELECT zelador.matricula, zelador.nome, zelador.data_nascimento FROM zelador
         JOIN jaula_zelador ON zelador.matricula = jaula_zelador.id_zelador 
         JOIN especime ON  jaula_zelador.id_jaula = especime.id_jaula
@@ -19,7 +19,18 @@ export const recupZeladorDeEspecieme = async (especie: Especie) => {
         GROUP BY zelador.matricula
     
     `
-    const  zelador = responseArray.map((jsonObj) => getZelador(jsonObj))
+    const  zelador = response.map((jsonObj) => getZelador(jsonObj))
 
     return zelador
+}
+
+export const matriculaDoZelador = async (matricula: string) => {
+    const response = await sql`
+        SELECT * FROM zelador 
+        WHERE matricula LIKE ${matricula}
+    `
+    const  zelador = response.map((jsonObj) => getZelador(jsonObj))
+
+    return zelador[0]
+
 }

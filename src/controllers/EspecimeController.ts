@@ -6,6 +6,7 @@
 - Recuperar todos os espécimes que são cuidados por um determinado zelador
 
  */
+
 import sql from "../config/db";
 
 import Jaula from "../models/Jaula";
